@@ -26,34 +26,36 @@ const perks = [
     icon: Users,
     headline: "White-glove onboarding",
     description:
-      "We'll migrate your data, set up your account, and train your team personally.",
+      "We\u2019ll migrate your data, set up your account, and train your team personally.",
   },
 ];
 
 export default function FoundingProgram() {
   return (
-    <section id="founding" className="py-20 sm:py-28 bg-stone-900">
+    <section id="founding" className="py-20 sm:py-28 bg-orange-50">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <AnimateOnScroll>
-          <Badge variant="dark">LIMITED</Badge>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-6">
-            Be one of our first 20 customers.
+          <Badge>LIMITED — 20 spots</Badge>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mt-6">
+            Shape the future of property management.
           </h2>
-          <p className="text-stone-300 text-lg mt-4 max-w-2xl mx-auto">
+          <p className="text-stone-600 text-lg mt-4 max-w-2xl mx-auto">
             We&apos;re launching Unfold and looking for founding customers who
-            want to shape the future of property management software.
+            want to help build the PM software they actually want to use.
           </p>
         </AnimateOnScroll>
 
         <div className="grid sm:grid-cols-2 gap-6 mt-14">
           {perks.map((perk, i) => (
             <AnimateOnScroll key={perk.headline} delay={i * 100}>
-              <div className="bg-stone-800 rounded-2xl p-8 text-left">
-                <perk.icon size={28} className="text-orange-500 mb-4" />
-                <h3 className="text-white font-bold text-lg">
+              <div className="bg-white rounded-2xl p-8 text-left border border-orange-100 shadow-sm">
+                <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center mb-4">
+                  <perk.icon size={20} className="text-orange-600" />
+                </div>
+                <h3 className="text-stone-900 font-bold text-lg">
                   {perk.headline}
                 </h3>
-                <p className="text-stone-400 mt-2 leading-relaxed">
+                <p className="text-stone-500 mt-2 leading-relaxed">
                   {perk.description}
                 </p>
               </div>
@@ -66,7 +68,7 @@ export default function FoundingProgram() {
             <Button href="https://app.unfoldpm.com/register" size="lg">
               Start Free Trial
             </Button>
-            <p className="text-stone-400 text-sm mt-4">
+            <p className="text-stone-500 text-sm mt-4">
               Only a few founding spots remaining
             </p>
           </div>

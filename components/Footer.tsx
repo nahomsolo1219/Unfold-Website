@@ -4,16 +4,20 @@ const columns = [
   {
     title: "Product",
     links: [
-      { label: "Features", href: "#features" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "Founding Program", href: "#founding" },
+      { label: "Payments", href: "/features/payments" },
+      { label: "Accounting", href: "/features/accounting" },
+      { label: "Maintenance", href: "/features/maintenance" },
+      { label: "Owner Portal", href: "/features/owners" },
+      { label: "Tenant Management", href: "/features/tenants" },
+      { label: "Pricing", href: "/pricing" },
     ],
   },
   {
     title: "Company",
     links: [
+      { label: "Founding Program", href: "/founding-program" },
+      { label: "Contact", href: "mailto:hello@unfoldpm.com" },
       { label: "About", href: "#" },
-      { label: "Contact", href: "#" },
       { label: "Blog", href: "#" },
     ],
   },
@@ -28,10 +32,9 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="bg-stone-900 py-16">
+    <footer className="bg-stone-950 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Logo */}
           <div>
             <Link
               href="/"
@@ -39,14 +42,14 @@ export default function Footer() {
             >
               Unfold
             </Link>
-            <p className="text-stone-400 text-sm mt-3">
+            <p className="text-stone-500 text-sm mt-3 leading-relaxed">
               Property management software that doesn&apos;t eat your profits.
             </p>
           </div>
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h4 className="text-stone-300 font-semibold text-sm uppercase tracking-wider mb-4">
+              <h4 className="text-stone-400 font-semibold text-xs uppercase tracking-wider mb-4">
                 {col.title}
               </h4>
               <ul className="space-y-3">
@@ -54,7 +57,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-stone-400 hover:text-orange-500 transition-colors text-sm"
+                      className="text-stone-500 hover:text-orange-500 transition-colors text-sm"
                     >
                       {link.label}
                     </Link>
@@ -65,8 +68,8 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-stone-800 mt-12 pt-8 text-center">
-          <p className="text-stone-500 text-sm">
+        <div className="border-t border-stone-800/50 mt-12 pt-8 text-center">
+          <p className="text-stone-600 text-sm">
             &copy; 2026 Unfold Property Management LLC. All rights reserved.
           </p>
         </div>

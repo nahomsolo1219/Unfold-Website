@@ -1,42 +1,42 @@
+import Link from "next/link";
+import { CreditCard, BookOpen, Wrench, Users, Home } from "lucide-react";
 import AnimateOnScroll from "./ui/AnimateOnScroll";
-import BrowserFrame from "./ui/BrowserFrame";
 
 const features = [
   {
-    headline: "Your entire portfolio at a glance",
+    icon: CreditCard,
+    title: "Online Rent Collection",
     description:
-      "See occupancy rates, revenue, outstanding balances, and maintenance status across all your properties — in real time.",
-    screenshot: "feature-dashboard.png",
+      "Collect rent at 0.3%. ACH, cards, autopay — powered by Stripe.",
+    href: "/features/payments",
   },
   {
-    headline: "Tenants, leases, and payments — all connected",
+    icon: BookOpen,
+    title: "Full Accounting",
     description:
-      "Manage the full tenant lifecycle from application to move-out. Track leases, automate rent charges, and keep every detail organized.",
-    screenshot: "feature-tenants.png",
+      "Chart of accounts, trust accounting, bank reconciliation, P&L, 1099s.",
+    href: "/features/accounting",
   },
   {
-    headline: "Collect rent at 0.3% per transaction",
+    icon: Wrench,
+    title: "Maintenance & Work Orders",
     description:
-      "Stripe-powered ACH and card payments with autopay. Your tenants pay online, you get paid fast — without the 3% fee.",
-    screenshot: "feature-payments.png",
+      "Requests to resolution. Tenant submits, you dispatch, vendor completes.",
+    href: "/features/maintenance",
   },
   {
-    headline: "Tenant requests to vendor invoices — seamless",
+    icon: Users,
+    title: "Owner Portal",
     description:
-      "Tenants submit requests, you create work orders, assign vendors, and track costs. When work is done, the expense auto-populates in your accounting.",
-    screenshot: "feature-maintenance.png",
+      "Monthly statements, payout tracking, property performance — self-serve.",
+    href: "/features/owners",
   },
   {
-    headline: "Real accounting. Not a bolt-on.",
+    icon: Home,
+    title: "Tenant Management",
     description:
-      "Chart of accounts, bank reconciliation, P&L reports, cash flow statements, trust accounting, 1099 generation, and Schedule E tax prep — all built in.",
-    screenshot: "feature-accounting.png",
-  },
-  {
-    headline: "Keep your owners informed and happy",
-    description:
-      "Owners get their own portal with monthly statements, property performance, and payout history. Generate and send statements with one click.",
-    screenshot: "feature-owner-portal.png",
+      "Leases, charges, payments, documents. The full tenant lifecycle.",
+    href: "/features/tenants",
   },
 ];
 
@@ -45,38 +45,40 @@ export default function FeatureShowcase() {
     <section id="features" className="py-20 sm:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll>
-          <div className="text-center mb-16 sm:mb-20">
+          <div className="text-center mb-16">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900">
-              Everything you need. Nothing you don&apos;t.
+              Everything you need to run your portfolio.
             </h2>
+            <p className="text-stone-500 text-lg mt-4">
+              Five core modules. One platform. No bolt-ons.
+            </p>
           </div>
         </AnimateOnScroll>
 
-        <div className="space-y-20 sm:space-y-32">
-          {features.map((feature, i) => {
-            const reversed = i % 2 === 1;
-            return (
-              <AnimateOnScroll key={feature.screenshot}>
-                <div
-                  className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
-                    reversed ? "lg:direction-rtl" : ""
-                  }`}
-                >
-                  <div className={reversed ? "lg:order-2" : ""}>
-                    <BrowserFrame filename={feature.screenshot} />
-                  </div>
-                  <div className={reversed ? "lg:order-1" : ""}>
-                    <h3 className="font-display text-2xl sm:text-3xl font-bold text-stone-900">
-                      {feature.headline}
-                    </h3>
-                    <p className="text-stone-600 text-lg mt-4 leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((f, i) => (
+            <AnimateOnScroll key={f.href} delay={i * 80}>
+              <Link
+                href={f.href}
+                className={`group block rounded-2xl border border-stone-200 bg-white p-8 hover:border-orange-200 hover:shadow-lg hover:shadow-orange-500/5 transition-all ${
+                  i >= 3 ? "lg:col-span-1 sm:col-span-1" : ""
+                }`}
+              >
+                <div className="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center mb-5">
+                  <f.icon size={24} className="text-orange-600" />
                 </div>
-              </AnimateOnScroll>
-            );
-          })}
+                <h3 className="font-display text-xl font-bold text-stone-900 group-hover:text-orange-600 transition-colors">
+                  {f.title}
+                </h3>
+                <p className="text-stone-500 mt-2 leading-relaxed text-sm">
+                  {f.description}
+                </p>
+                <span className="inline-block mt-4 text-sm font-medium text-orange-600 group-hover:translate-x-1 transition-transform">
+                  Learn more &rarr;
+                </span>
+              </Link>
+            </AnimateOnScroll>
+          ))}
         </div>
       </div>
     </section>

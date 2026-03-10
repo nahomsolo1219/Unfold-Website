@@ -25,6 +25,12 @@ const config: Config = {
           700: "#44403C",
           800: "#292524",
           900: "#1C1917",
+          950: "#0C0A09",
+        },
+        dark: {
+          surface: "#171412",
+          card: "#1E1B18",
+          "card-border": "#2E2A27",
         },
       },
       fontFamily: {
